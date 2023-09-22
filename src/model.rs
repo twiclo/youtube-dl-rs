@@ -325,6 +325,8 @@ pub enum Protocol {
     M3U8,
     #[serde(rename = "m3u8_native")]
     M3U8Native,
+    #[serde(rename = "m3u8_native+https")]
+    M3U8NativeHttps,
     #[serde(rename = "http_dash_segments")]
     HttpDashSegments,
     #[serde(rename = "mhtml")]
