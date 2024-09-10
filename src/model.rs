@@ -77,9 +77,9 @@ pub struct Format {
 // this custom parse function exists.
 fn parse_codec<'de, D>(d: D) -> Result<Option<String>, D::Error>
 where
-D: serde::de::Deserializer<'de>,
+D: de::Deserializer<'de>,
 {
-	serde::de::Deserialize::deserialize(d).map(|x: Option<_>| match x.unwrap_or_default() {
+	Deserialize::deserialize(d).map(|x: Option<_>| match x.unwrap_or_default() {
 		Some(ref s) if s == "none" => None,
 		x => x,
 	})
@@ -254,7 +254,7 @@ pub struct SingleVideo {
 	pub playlist_uploader_id: Option<String>,
 	pub preference: Option<Value>,
 	pub protocol: Option<Protocol>,
-	pub quality: Option<i64>,
+	pub quality: Option<f64>,
 	pub release_date: Option<String>,
 	pub release_year: Option<i64>,
 	pub repost_count: Option<i64>,
